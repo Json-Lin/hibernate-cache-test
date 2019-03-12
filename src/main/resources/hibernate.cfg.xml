@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- 数据库连接配置 -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+        <!-- 数据库连接池的大小 -->
+        <property name="connection.pool_size">5</property>
+        <!-- 每次从数据库中取出并放到JDBC的Statement中的记录条数。Fetch Size设的越大，读数据库的次数越少，速度越快，Fetch Size越小，读数据库的次数越多，速度越慢-->
+        <property name="jdbc.fetch_size">50</property>
+        <!--批量插入,删除和更新时每次操作的记录数。Batch Size越大，批量操作的向数据库发送Sql的次数越少，速度就越快，同样耗用内存就越大-->
+        <property name="jdbc.batch_size">23</property>
+        <!-- SQL 方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+        <!-- 在控制台输出sql语句 -->
+        <property name="show_sql">true</property>
+        <!-- 在启动时根据配置更新数据库 -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- 二级缓存配置 -->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">com.foo.cache.MyRegionFactoryImpl</property>
+        <property name="hibernate.cache.use_minimal_puts">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <property name="hibernate.cache.region_prefix">customer-hibernate-cache</property>
+        <property name="hibernate.cache.default_cache_concurrency_strategy">nonstrict-read-write</property>
+
+
+        <mapping class="com.foo.model.Event"/><!-- 注册我们的实体映射类-->
+    </session-factory>
+</hibernate-configuration>
