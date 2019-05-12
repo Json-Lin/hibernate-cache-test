@@ -35,32 +35,34 @@ public class Main {
                 System.out.println(event);
             }
         });*/
-        //3.查询集合
-        doExecute(sessionFactory, new HibernateExecuteCallBack() {
-            @Override
-            public void execute(Session session) {
-                testIterateQuery(session,"from Event where id>=7");
-            }
-        });
-        doExecute(sessionFactory, new HibernateExecuteCallBack() {
-            @Override
-            public void execute(Session session) {
-                testIterateQuery(session,"from Event where id>=7");
-            }
-        });
-        //4.查询集合
+        //3.Iterate查询集合
         /*doExecute(sessionFactory, new HibernateExecuteCallBack() {
             @Override
             public void execute(Session session) {
-                testListQuery(session, "from Event where id>=7");
+                testIterateQuery(session,"from Event where id>=7");
             }
         });
+        System.out.println("=====================================");
+        doExecute(sessionFactory, new HibernateExecuteCallBack() {
+            @Override
+            public void execute(Session session) {
+                testIterateQuery(session,"from Event where id>=7");
+            }
+        });*/
+        //4.List查询集合
         doExecute(sessionFactory, new HibernateExecuteCallBack() {
             @Override
             public void execute(Session session) {
                 testListQuery(session, "from Event where id>=7");
             }
-        });*/
+        });
+        System.out.println("=====================================");
+        doExecute(sessionFactory, new HibernateExecuteCallBack() {
+            @Override
+            public void execute(Session session) {
+                testListQuery(session, "from Event where id>=7");
+            }
+        });
     }
 
     private static void testIterateQuery(Session session, String testHql) {

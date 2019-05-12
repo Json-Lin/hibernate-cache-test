@@ -16,10 +16,6 @@ public class Cache {
         return cache.get(key);
     }
 
-    public void get(Object key, Object value) {
-        cache.put(key, value);
-    }
-
     public boolean contains(Object key) {
         return cache.containsKey(key);
     }

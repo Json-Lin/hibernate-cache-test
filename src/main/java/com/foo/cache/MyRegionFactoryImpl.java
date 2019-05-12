@@ -56,6 +56,7 @@ public class MyRegionFactoryImpl extends RegionFactoryTemplate {
     @Override
     protected void prepareForUse(SessionFactoryOptions settings, Map configValues) {
         this.cacheManager = new CacheManager();
+        //一个打印缓存内容的线程，用于观察缓存里面的内容
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
